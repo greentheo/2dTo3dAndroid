@@ -10,8 +10,8 @@
 
     
     
-    <ImageView 
-        android:id="@+id/mainImage"
+    <FrameLayout 
+        android:id="@+id/cameraPreview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ff000000"
@@ -24,6 +24,34 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:background="#ffF1F2F2" />
+    
+    
+    <TextView 
+        android:id="@+id/yaw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:background="#ffF1F2F2"
+        />
+    <TextView 
+        android:id="@+id/pitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/yaw"
+        android:layout_alignParentLeft="true"
+        android:background="#ffF1F2F2"
+        />
+    <TextView 
+        android:id="@+id/roll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pitch"
+        android:layout_alignParentLeft="true"
+        android:background="#ffF1F2F2"
+        />
+    
+    
     
     <Button 
         android:id="@+id/pictureBtn"
