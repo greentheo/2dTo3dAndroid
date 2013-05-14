@@ -81,7 +81,7 @@ public class MainActivity extends Activity implements PictureCallback, SensorEve
 				if(mCamera!=null)
 				{
 					mCamera.takePicture(null, null, MainActivity.this);//new PhotoHandler(getApplicationContext()));
-					yawPitchRollOfPicture = ",Yaw:"+yaw+",Pitch:"+pitch+",Roll:"+roll;
+					yawPitchRollOfPicture = "Yaw_"+yaw+"_Pitch_"+pitch+"_Roll_"+roll;
 				}
 				
 			}
@@ -201,7 +201,7 @@ public class MainActivity extends Activity implements PictureCallback, SensorEve
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyymmddhhmmss", Locale.US);
 		String date = dateFormat.format(new Date());
-		String photoFile = "Picture_" + date + ".jpg";
+		String photoFile = "Picture_" + date + "_"+yawPitchRollOfPicture+".jpg";
 
 		String filename = pictureFileDir.getPath() + File.separator + photoFile;
 
@@ -217,7 +217,7 @@ public class MainActivity extends Activity implements PictureCallback, SensorEve
 			
 			
 			
-			updateMasterCsv(filename+yawPitchRollOfPicture+"\n");
+			//updateMasterCsv(filename+yawPitchRollOfPicture+"\n");
 			
 			Toast.makeText(this, "New Image saved:" + photoFile, Toast.LENGTH_LONG).show();
 		} 
