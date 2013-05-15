@@ -1,0 +1,25 @@
+notes about yaw, pitch and roll
+
+yaw is a directional sensor that the top of the phone is pointing in - 0 North, 180 south
+ 
+roll - in the horizontal degree of tilt towards the ground
+
+pitch  - is the vertical degree of tilt towards the ground
+
+
+==in horizontal position
+roll = 90 then vertical
+pitch = 0 then level
+
+roll = 90 + pitch = 45 then the phone is vertical but rotated to the left
+
+== can work out the angles between the two views pretty easily
+
+== from those angles we can "correct" the images and triangulate to match up the images better
+
+== from the corrected images we can detect features in one and identify in the other
+
+==measure their shift
+
+== and calculate what distance those features are from the viewer
+
