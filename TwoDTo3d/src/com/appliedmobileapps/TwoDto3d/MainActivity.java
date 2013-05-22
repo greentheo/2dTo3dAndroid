@@ -55,6 +55,8 @@ public class MainActivity extends Activity implements PictureCallback, SensorEve
     float roll;
     
     String yawPitchRollOfPicture = "";
+    
+    boolean camFrozen = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +82,19 @@ public class MainActivity extends Activity implements PictureCallback, SensorEve
 				//Take Picture!
 				if(mCamera!=null)
 				{
-					mCamera.takePicture(null, null, MainActivity.this);//new PhotoHandler(getApplicationContext()));
-					yawPitchRollOfPicture = "Yaw_"+yaw+"_Pitch_"+pitch+"_Roll_"+roll;
+					
+					if(camFrozen)
+					{
+						mCamera.startPreview();
+						camFrozen = false;
+					}
+					else
+					{
+						mCamera.takePicture(null, null, MainActivity.this);//new PhotoHandler(getApplicationContext()));
+						yawPitchRollOfPicture = "Yaw_"+yaw+"_Pitch_"+pitch+"_Roll_"+roll;
+						camFrozen = true;
+					}
+					
 				}
 				
 			}
