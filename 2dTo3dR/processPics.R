@@ -35,18 +35,18 @@ plotPicDiff = function(img1, img2){
 #   surface3d(x=1:nrow(bw1), y=1:ncol(bw1), z=bw1-bw2)
 }
 
-findMatches(img1, img2, gps = 30, df=60, skip=5){
+findMatches=function(img1, img2, gps = 30, df=60, skip=5){
   #gps = grid filter size (the size of the grid to find points on)
   #df = difference Filter so you don't have to compare each grid to all grids.. .just ones close by
   
   #threshold for easier analysis (at first)
   bw1 = imageData(flip(resize(img1,w=dim(img1)[1]/4)))
   bw1 = (bw1[,,1]+bw1[,,2]+bw1[,,3])/3
-  bw1 = ifelse(bw1>mean(bw1), 0, 1)
+  #bw1 = ifelse(bw1>mean(bw1), 0, 1)
   
   bw2 = imageData(flip(resize(img2, w=dim(img2)[1]/4)))
   bw2 = (bw2[,,1]+bw2[,,2]+bw2[,,3])/3
-  bw2 = ifelse(bw2>mean(bw2), 0, 1)
+  #bw2 = ifelse(bw2>mean(bw2), 0, 1)
   
   #divide up the first image into points with features
   colInd = seq.int((1),(nrow(bw1)-gps+1), by=skip)
@@ -89,7 +89,7 @@ findMatches(img1, img2, gps = 30, df=60, skip=5){
   #now we can only allow a unique match... so select best match value
   
   featCor[is.na(featCor)]=-1
-  matchInd = which(diag(featCor[,matches])>.3)
+  matchInd = which(diag(featCor[,matches])>.75)
   match1Y = feats1[c(1:nrow(feats1))[matchInd], 1]
   match1X = feats1[c(1:nrow(feats1))[matchInd], 2]
   match2Y = feats2[matches[matchInd], 1]
